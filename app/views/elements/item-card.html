@@ -1,0 +1,57 @@
+<div class="no-selection-message" ng-show="!ngModel">
+	<h4>Select a resource from the list</h4>
+</div>
+<div class="item-card" ng-show="ngModel">
+	<div class="card-header">
+		<h3 class="section-title card-title">Chosen Item</h3>
+		<p class="section-description card-description">this is another option to show the explication under each section.<br/>maybe show only at hover/pressed?</p>
+	</div>
+	<div class="card-body">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-7 general-column">
+					<div class="group-view">
+						<h4 class="group-title">
+							<span>General details</span>
+							<span class="help-icon" tooltip-trigger="mouseenter" tooltip-placement="bottom" uib-tooltip="explination under each section"></span>
+						</h4>
+						<p class="section-description">explination under each section.</p>
+						
+						<ul class="fields-list">
+							<li class="field-container">
+								<span class="field-title">Name</span>
+								<p class="field-value">{{ngModel.name}}</p>
+							</li>
+							<li class="field-container">
+								<span class="field-title">Description</span>
+								<p class="field-value field-textarea">{{ngModel.description}}</p>
+							</li>
+							<li class="field-container">
+								<span class="field-title">Resource type</span>
+								<p class="field-value">{{ngModel.resourceType}}</p>
+							</li>
+							<li class="field-container">
+								<span class="field-title">Path</span>
+								<p class="field-value">{{ngModel.path}}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-5 actions-column">
+					<div class="group-view">
+						<h4 class="group-title">
+							<span>Permitted actions</span>
+							<span class="help-icon" tooltip-trigger="mouseenter" tooltip-placement="bottom" uib-tooltip="explination under each section"></span>
+						</h4>
+						<p class="section-description">explination under each section.</p>
+						
+						<ul class="actions-list">
+							<li ng-repeat="item in ( filteredItems = ( actions | inArray:ngModel.actionIds:'id' ) ) | orderBy: 'name'">{{item.name}}</li>
+							<!--<li ng-repeat="item in ( filteredItems = ( actions | filter:filterActions ) ) | orderBy: 'name'">{{item.name}}</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

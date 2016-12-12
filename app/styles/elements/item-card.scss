@@ -1,0 +1,72 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.item-card {
+	@include box-shadow-color('card-shadow');
+	@include background-color('secondary', 'base');
+
+	width: 100%;
+	box-shadow: none;
+	margin: 0;	
+	position: relative;
+	
+	.card-header {
+		@include background-color('theme-color', 'base');
+		@include color('secondary', 'base');
+
+		padding: 15px;
+
+			
+		.card-title {
+			margin-top: 0;
+			
+		}
+		.card-description {
+			@include color('secondary', 'trans');
+		}
+	}
+	.card-body {
+		margin-top: 10px;
+		
+		.general-column {
+			@include border-color('primary', 'super-light');
+			border-right: 3px solid;
+		}
+
+		.general-column, .actions-column {
+			padding-bottom: 15px;
+		}
+		
+		.actions-list {
+			list-style: none;
+			padding: 0;
+			margin-top: 35px;
+			
+			li {
+				@include background-color('theme-color', 'light');
+				@include color('primary', 'base');
+				@include font-size(1.2);
+
+				line-height: 34px;
+			    margin-bottom: 5px;
+			    padding: 0 10px;
+			}
+		}
+
+	}
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+	.item-card {
+		box-shadow: 0px 1px 4px var(--box-shadow-color);
+		width: 80%;
+		margin: 8vh auto 4vh;
+		
+		.card-body {
+			.general-column, .actions-column {
+				min-height: 430px;
+			}
+		}
+	}
+}

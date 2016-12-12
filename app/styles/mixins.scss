@@ -1,0 +1,104 @@
+/// Themify mixin
+/// @access private
+/// @param {String} $property - Property to themify
+/// @param {String} $key - Key color to use from theme
+/// @param {Map} $themes [$themes] - Map of themes to use
+@mixin themify($property, $key, $color-variant:null, $themes: $themes, $default-theme: $default-theme) {
+	// Iterate over the themes
+	
+	/// We'll be setting a default color for the selector incase no theme was set.
+	$default-colors: map-get($default-theme, 'colors');
+	$default-color: null;
+	
+	@each $themeName, $value in $themes {
+		
+		$colors: map-get($value, 'colors');
+		$color: null;
+		
+		/// color variant is optional
+		@if ($color-variant != null) {
+			/// map inception
+			$color: map-get(map-get($colors, $key), $color-variant);
+			$default-color: map-get(map-get($default-colors, $key), $color-variant);
+		} @else {
+			$color: map-get($colors, $key);
+			$default-color: map-get($default-colors, $key);
+		}
+
+		/// Create fallback color based on the default theme
+		& {
+			// Output the declaration
+			#{$property}: $default-color;
+		}
+
+		/// Create a selector (e.g. `.media.theme-light, .theme-light .media`)		
+		&.theme-#{$themeName},
+		.theme-#{$themeName} & {
+			// Output the declaration
+			#{$property}: $color;
+		}
+	}
+}
+
+/// Shorthand to themify color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin color($arguments...) {
+	@include themify('color', $arguments...);
+}
+
+/// Shorthand to themify border-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-color($arguments...) {
+	@include themify('border-color', $arguments...);
+}
+
+/// Shorthand to themify border-left-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-left-color($arguments...) {
+	@include themify('border-left-color', $arguments...);
+}
+
+/// Shorthand to themify border-right-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-right-color($arguments...) {
+	@include themify('border-right-color', $arguments...);
+}
+
+/// Shorthand to themify border-top-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-top-color($arguments...) {
+	@include themify('border-top-color', $arguments...);
+}
+
+/// Shorthand to themify border-bottom-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-bottom-color($arguments...) {
+	@include themify('border-bottom-color', $arguments...);
+}
+
+/// Shorthand to themify background-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin background-color($arguments...) {
+	@include themify('background-color', $arguments...);
+}
+
+/// Shorthand to themify --box-shadow-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin box-shadow-color($arguments...) {
+	@include themify('--box-shadow-color', $arguments...);
+}
+
+/// Set the correct font-size
+/// @access public
+@mixin font-size($sizeValue: 1.6) {
+	font-size: ($sizeValue * 10) + px;
+	font-size: $sizeValue + rem;
+}

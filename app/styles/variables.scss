@@ -1,0 +1,52 @@
+///
+/// The default theme is 'light'
+///
+$default-theme: (
+	'colors': (
+	    'primary': (
+	    	'base': #666666,
+	    	'normal': #e5e5e5,
+	    	'light': #adadad,
+	    	'super-light': #f2f2f2,
+	    	'dark': #4b555f,
+	    ),
+	    'secondary': (
+	    	'base': #ffffff,
+	    	'trans': transparentize(#ffffff, 0.4)
+	    ),
+	    'theme-color': (
+			'base': #5390ea,
+			'light': tint(#5390ea, 90%)
+		),
+		'green': #71d366,
+	    'card-shadow': tint(#000000, 20%)
+	)
+);
+
+$themes: (
+	'light': $default-theme,
+	'dark': (
+		'colors': (
+		    'primary': (
+		    	'base': #ffffff,
+		    	'normal': #adadad,
+		    	'light': #e5e5e5,
+		    	'super-light': #4b555f,
+		    	'dark': #f2f2f2,
+		    ),
+		    'secondary': (
+		    	'base': #666666,
+		    	'trans': transparentize(#666666, 0.4)
+		    ),
+		    'theme-color': (
+				'base': #53eabe,
+				'light': shade(#53eabe, 70%)
+			),
+			'green': #71d366,
+		    'card-shadow': tint(#000000, 20%)
+		)
+	)
+) !default;
+
+$header-height: 44px;
+$sidebar-width: 300px;

@@ -1,0 +1,348 @@
+$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+@import "variables.scss";
+@import "mixins.scss";
+
+
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+body {
+	@include background-color('primary', 'super-light');
+	
+	padding: 0;
+}
+
+/// Start: Icons
+.search-icon {
+	-webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+	-webkit-mask-position: center center;
+	-webkit-mask-image: url(/images/search.svg);
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+	mask-position: center center;
+	mask-image: url(/images/search.svg);
+	height: 24px;
+	width: 24px;
+}
+
+.status-icon {	
+	-webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+	-webkit-mask-position: center center;
+	-webkit-mask-image: url(/images/active.svg);
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+	mask-position: top center;
+	mask-image: url(/images/active.svg);
+    width: 24px;
+    height: 24px;
+}
+.haschild-icon {	
+	content: " ";
+	-webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+	-webkit-mask-position: center center;
+	-webkit-mask-image: url(/images/arrow-right.svg);
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+	mask-position: center center;
+	mask-image: url(/images/arrow-right.svg);
+    width: 24px;
+    height: 24px;
+}
+.help-icon {
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: 100%;
+	-webkit-mask-image: url(/images/help-12.svg);
+	mask-size: 100%;
+	mask-repeat: no-repeat;
+	mask-image: url(/images/help-12.svg);
+	width: 24px;
+	height: 24px;
+}
+/// End: Icons
+
+/// Start: Common global styling
+
+#loading-bar .bar {
+	@include background-color('theme-color', 'base');
+}
+
+.section-title {
+	@include font-size(2.0);
+	
+	font-weight: normal;
+}
+
+.section-description {
+	@include color('primary', 'light');
+	@include font-size(1.2);
+}
+
+.field-container {
+		
+	.field-title {
+		@include color('primary', 'light');
+		
+		text-transform: uppercase;		
+		line-height: 20px;
+	
+	}
+	.field-value {
+		@include background-color('theme-color', 'light');
+		@include color('primary', 'base');
+		@include font-size(1.2);
+	
+		padding: 5px 10px;
+		margin-top: 5px;
+	}
+	.field-textarea {
+		min-height: 100px;
+	}
+}
+
+/// End: Common global styling
+
+/// Header
+.header {
+	@include background-color('primary', 'dark');
+
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	
+	.header-logo {
+		vertical-align: top;
+	    line-height: 48px;
+	    display: inline-block;
+	    padding-left: 15px;
+	    
+		img {
+			max-height: 32px;	
+		}
+	}
+	
+	/* Make the title the same height as the header */
+	.header-title {
+		@include color('secondary', 'base');
+		@include font-size(2.0);
+		
+		display: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		margin-left: 20px;
+	    line-height: 48px;
+	    font-weight: normal;
+	}
+	
+	.navbar-toggle .icon-bar {
+		@include background-color('secondary', 'base');
+	}
+}
+
+/// Start: Split view
+
+.split-view {
+	min-height: 100%;
+	position: relative;
+}
+.split-view::after, .split-view::before {
+    display: table;
+    content: " ";
+}
+
+/// The left side view on the 'split view'
+.left-side {
+	@include background-color('secondary', 'base');
+	
+	position: absolute;
+	width: 0%;
+	min-height: 100vh;
+    height: 100%;
+	display: none;
+	z-index: 900;
+	
+	&.visible {
+		width: 100%;
+		display: block;
+	}
+}
+
+/// The right side view on the 'split view'
+.right-side {
+	margin-left: 0;
+	min-height: 90vh;
+	display: block;
+}
+
+/// Padding equals to the fix header height.
+.left-side, .right-side {
+	padding-top: 48px;
+}
+
+/// End: Split view
+
+/// Start: Sidebar
+
+.sidebar {
+	@include background-color('secondary', 'base');
+	
+	.sidebar-header {
+		padding: 0 10px;	
+		
+		.section-title {
+			@include color('primary', 'base');
+		}
+		.search-bar {
+			@include background-color('primary', 'super-light');
+	
+			position: relative;
+	
+			input {
+				@include color('primary', 'base');
+				
+				background: transparent;
+				width: 100%;
+				line-height: 20px;
+				padding: 5px;
+				padding-right: 40px;
+				border: none;
+			}
+			.search-icon {
+				@include background-color('primary', 'base');
+				
+				position: absolute;
+				height: 100%;
+				right: 10px;
+				top: 0;
+			}
+		}
+	}
+
+	.reload-btn {
+		@include background-color('theme-color', 'base');
+		@include color('secondary', 'base');
+		@include font-size(1.8);
+		
+		margin: 90px auto 0;
+		display: table;
+		border: none;
+		padding: 10px 15px;
+	}
+	
+	.resources-list {
+		list-style: none;
+		padding: 0;
+		padding-top: 10px;
+		margin-bottom: 0;
+		
+		li {
+			@include border-bottom-color('primary', 'light');
+			@include color('primary', 'base');
+			@include font-size(1.4);
+			
+			border-bottom: 1px solid;
+			line-height: 44px;
+			position: relative;
+
+			cursor: pointer;
+			border-left: 4px solid transparent;
+			
+			.status-icon {
+				@include background-color('green');
+				
+				display: inline-block;
+			    margin-left: 5px;
+		        vertical-align: middle;
+			}
+			
+			.haschild-icon {
+				@include background-color('primary', 'base');
+				
+				display: none;
+				position: absolute;
+				top: 0;
+			    right: 15px;
+			    height: 100%;
+			}
+		
+			&.active {
+				@include border-left-color('theme-color', 'base');
+	
+			}
+			
+			&.active, &:hover {
+				@include background-color('primary', 'normal');
+				
+				.haschild-icon {
+					display: block;
+				}
+			}
+			
+		}
+		
+	}
+}
+/// End: Sidebar
+
+/// Start: Group view
+
+.group-view {
+	
+	.group-title {
+		@include color('theme-color', 'base');
+		@include font-size(1.2);
+		
+		text-transform: uppercase;
+		font-weight: normal;
+		
+		.help-icon {
+			@include background-color('primary', 'base');
+			
+			display: inline-block;
+			vertical-align: middle;
+			height: 27px;
+		}
+	}
+	
+	.fields-list {
+		padding: 0;
+		list-style: none;
+	}
+}
+/// End: Group view
+
+/// When no item in the list selected a message is shown.
+
+.no-selection-message {
+	text-align: center;
+    height: 90vh;
+    width: 100%;
+    display: table;
+    position: absolute;
+    vertical-align: middle;
+    padding: 0 15px;
+	
+	h4 {
+		@include color('secondary', 'base');
+		@include font-size(3.2);
+		
+		padding-right: 0;
+		vertical-align: middle;
+		display: table-cell;
+		text-transform: uppercase;
+		text-shadow: 0px 0px 1px black;
+	}
+}
+
+@import "elements/item-card.scss";
+@import "responsive.scss";

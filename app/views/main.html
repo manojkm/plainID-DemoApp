@@ -1,0 +1,28 @@
+<div class="split-view">
+	
+	<aside class="left-side" ng-class="{visible: sidebarVisible}">
+		<div class="sidebar">
+			<div class="sidebar-header">
+				<h2 class="section-title">My Resources</h2>
+				<p class="section-description">explination under each section. maybe show only at hover/pressed</p>
+				<div class="search-bar">
+					<input type="text" class="search-input" placeholder="Search Resource" ng-model="searchValue" ng-change="onSearch(this)" />
+					<span class="search-icon"></span>
+				</div>
+			</div>
+			
+			<button class="reload-btn" ng-show="!loading && !resources.length" ng-click="onSearch()">Reload</button>
+			<ul class="resources-list" ng-show="resources.length">
+			    <li ng-repeat="item in filteredResources track by $index" ui-sref="resources.view({id: item.id})" ui-sref-active="active">
+   					<span class="status-icon"></span>
+					<span class="item-title">{{item.name}}</span>
+					<span class="haschild-icon"></span>
+			    </li>
+			</ul>
+		</div>
+	</aside>
+	
+	<aside ui-view="card-view" class="right-side">
+		
+	</aside>
+</div>

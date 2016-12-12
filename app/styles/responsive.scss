@@ -1,0 +1,36 @@
+@import "variables.scss";
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+	.container {
+		max-width: 730px;
+	}
+
+	/* Remove the padding we set for modile */
+	.header {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.header {
+		.header-title {
+		    display: inline-block;
+		}
+	}
+	
+	.left-side, .left-side.visible {
+		width: $sidebar-width;
+		display: block;
+	}
+	
+	.right-side {
+		margin-left: $sidebar-width;
+	}
+	
+	.no-selection-message {
+		h4 {
+			padding-right: $sidebar-width;
+		}
+	}
+	
+}
